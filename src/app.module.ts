@@ -4,8 +4,10 @@ import { AppService } from './app.service';
 
 import { CaptchaModule } from './captcha/captcha.module';
 
+import { ConfigModule } from '@nestjs/config';
+
 @Module({
-  imports: [CaptchaModule],
+  imports: [ConfigModule.forRoot({ isGlobal: true }), CaptchaModule],
   controllers: [AppController],
   providers: [AppService],
 })
