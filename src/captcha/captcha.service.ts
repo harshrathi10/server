@@ -5,11 +5,11 @@ export class CaptchaService {
     private readonly logger = new Logger(CaptchaService.name);
     // Using require here as the package might not have TS types or is a CJS module
     private readonly siarashield = require('siarashield');
-    private readonly PRIVATE_KEY = process.env.CYBERSIARA_PRIVATE_KEY || 'TEST-CYBERSIARA';
+    private readonly PRIVATE_KEY = process.env.CYBERSIARA_PRIVATE_KEY;
 
     async validateToken(token: string): Promise<any> {
-        this.logger.log(`Validating token. Private Key: ${this.PRIVATE_KEY.substring(0, 5)}...`);
-        this.logger.log(`Token received (length ${token.length}): ${token.substring(0, 10)}...`);
+        this.logger.log(`Validating token. Private Key: ${this.PRIVATE_KEY?.substring(0, 5)}...`);
+        this.logger.log(`Token received (length ${token?.length}): ${token?.substring(0, 10)}...`);
 
         return new Promise((resolve, reject) => {
             if (!this.PRIVATE_KEY) {
