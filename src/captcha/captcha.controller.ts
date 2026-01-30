@@ -8,11 +8,11 @@ export class CaptchaController {
 
     @Post('validate')
     @Post('validate')
-    async validate(@Body() body: { token: string }, @Res() res: Response) {
-        if (!body || !body.token) {
+    async validate(@Body() body: { CyberSiaraToken: string }, @Res() res: Response) {
+        if (!body || !body.CyberSiaraToken) {
             return res.status(400).json({ message: 'Token is missing from request body' });
         }
-        const { token } = body;
+        const { CyberSiaraToken: token } = body;
 
         try {
             const result = await this.captchaService.validateToken(token);
